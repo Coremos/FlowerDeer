@@ -38,6 +38,11 @@ namespace FlowerDeer.Manager
             }
         }
 
+        public void PlaySoundOnClick(string name)
+        {
+            PlaySound(name);
+        }
+
         public void PlaySound(string name, float volume = 1.0f, float pitch = 1.0f)
         {
             if (!clipDictionary.ContainsKey(name)) return;

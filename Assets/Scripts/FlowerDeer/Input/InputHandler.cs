@@ -24,12 +24,18 @@ namespace FlowerDeer.InputSystem
             UpdateKeyPair();
         }
 
+        private void OnDisable()
+        {
+            inputHandles.Clear();
+        }
+
         private void InitializeKey()
         {
             keys = new Dictionary<KeyType, KeyCode>();
 
             keys.Add(KeyType.LEFT, KeyCode.LeftArrow);
             keys.Add(KeyType.RIGHT, KeyCode.RightArrow);
+            keys.Add(KeyType.JUMP, KeyCode.Space);
         }
 
         private void UpdateKeyPair()
@@ -47,6 +53,14 @@ namespace FlowerDeer.InputSystem
                     for (int handleIndex = 0; handleIndex < inputHandles.Count; handleIndex++)
                     {
                         inputHandles[handleIndex].OnInputKey(keyPairs[index].Key);
+                    }
+                }
+
+                if (Input.GetKeyUp(keyPairs[index].Value))
+                {
+                    for (int handleIndex = 0; handleIndex < inputHandles.Count; handleIndex++)
+                    {
+                        inputHandles[handleIndex].OnInputKeyUp(keyPairs[index].Key);
                     }
                 }
             }

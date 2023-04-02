@@ -12,6 +12,11 @@ namespace FlowerDeer.Manager
             return StartCoroutine(Timer(time, onCompleteEvent));
         }
 
+        public void CancleTimer(Coroutine timer)
+        {
+            StopCoroutine(timer);
+        }
+
         private IEnumerator Timer(float time, Action onCompleteEvent)
         {
             while (time > 0)
